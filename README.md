@@ -228,6 +228,7 @@ The ThreeJS installation and setup documentation assumes you are using something
 </script>
 ```
 This `<script>` element contains a JSON object that enables ThreeJS and common "addons" to be imported in your JavaScript file from CDN links. Notice that the values of the two properies that specify URLs contain "@0.164.1". This specifies the version of ThreeJS to import. 0.164.1 is the current version at the time of writing. You should change this value if you would like to use a different version.
+
 4. ThreeJS is now ready for use. Try following the [Create a Scene](https://threejs.org/docs/index.html#manual/en/introduction/Creating-a-scene) tutorial in the ThreeJS docs to learn the basic concepts. The completed code is available in the sample solution for this practical, which is already available in the Lecture-Examples repo. Look for the threejsBasicSetup folder.
 
 
