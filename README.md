@@ -119,6 +119,7 @@ Some tips for growing the snake and moving it as it gets longer:
 Library tutorials are available for:
 - [How to Use Font Awesome Icons](#how-to-use-font-awesome-icons)
 - [p5js Basics](#p5js-basics)
+- [ThreeJS setup](#threejs-setup)
 - [Create a Webcam Background With TensorFlow](#create-a-webcam-background-with-tensorflow)
 
 You're not expected to do all of them! 
