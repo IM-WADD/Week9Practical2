@@ -211,6 +211,39 @@ Hopefully this tutorial will help you get started with p5js. There are lots of t
 - p5js always adds the canvas to the end of the `<body>`, after anything else that’s rendered. Take a look at [this page](https://github.com/processing/p5.js/wiki/Positioning-your-canvas) for guidance on how to position the canvas elsewhere.
 - Try translating some of your Processing work (or lecture / practical sample code) from PDM or CT into p5js. For example, the Pong game from PDM practical 3 would be a good option. Keep in mind that while a lot of the syntax is similar between the two versions there are some differences—keep the p5js reference open as you work.
 
+### ThreeJS setup
+The ThreeJS installation and setup documentation assumes you are using something called NodeJS, which is not permitted for this assessment (because it requires installation which is prone to breaking due to setup difference on different computers). The steps below walk you through setup using a CDN rather than Node.
+1. Create a new basic HTML page and linked CSS and JS files.
+2. In your HTML file, find the `<script>` tag that links your JS file. Add the attribute `type="module"` to the script tag (modules will be explained in week 11). This allows you to use the import syntax as shown in the ThreeJS documentation.
+3. Still in the HTML file, add the following code at the very end of the `<head>` element:
+```javascript
+<script type="importmap">
+    {
+        "imports": {
+            "three": "https://cdn.jsdelivr.net/npm/three@0.164.1/build/three.module.js",
+            "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.164.1/examples/jsm/"
+        }
+    }
+</script>
+```
+This `<script>` element contains a JSON object that enables ThreeJS and common "addons" to be imported in your JavaScript file from CDN links. Notice that the values of the two properies that specify URLs contain "@0.164.1". This specifies the version of ThreeJS to import. 0.164.1 is the current version at the time of writing. You should change this value if you would like to use a different version.
+4. ThreeJS is now ready for use. Try following the [Create a Scene](https://threejs.org/docs/index.html#manual/en/introduction/Creating-a-scene) tutorial in the ThreeJS docs to learn the basic concepts. The completed code is available in the sample solution for this practical, which is already available in the Lecture-Examples repo. Look for the threejsBasicSetup folder.
+
+
+#### Using 3D models created elsewhere
+ThreeJS recommends that you use models exported in the glTF format. This format is supported by Blender. You can also find free 3D models on [sketchfab.com](https://sketchfab.com/).
+
+In order to load glTF models, you will need to use the ThreeJS addon, `GLTFLoader`. The [official docmentation](https://threejs.org/docs/#examples/en/loaders/GLTFLoader) is somewhat helpful but I suggest you take a look at the threejsImportedModel example in the practical sample solutions.
+
+General troubleshooting tips:
+- Always check for JavaScript errors in the console first
+- If you can't see your model and there are no errors, try loading your model in [this ThreeJS powered viewer](https://gltf-viewer.donmccurdy.com/). 
+    - If you can't see the model in the viewer, then there is a problem with your model. Check its format and textures etc. 
+    - If you *can* see the model in the viewer, then the problem is likely to do with how your scene is set up in your code. This is usually to do with the lighting, camera position, model position, or model size. It is recommended that you start with the threejsImportedModel sample code and modify it to work with your own model. If you are not using the sample code, make sure you have the scene background colour set to white or light grey. Texture and lighting problems usually result in the model appearing black so you won't be able to see it on a black background!
+
+#### Adding controls
+ThreeJS provides a number of different options for allowing the user to control the camera. The threejsImportedModel sample solution shows how to setup and use the [OrbitControls](https://threejs.org/docs/index.html#examples/en/controls/OrbitControls). Try some of the others listed in the docs. If the documentation is a little sparse, look for examples that use the controller of interest. Relevant examples are linked from the documentation pages.
+
 ### Create a Webcam Background With TensorFlow
 TensorFlow.js is a Google machine learning library that allows you to embed some AI capabilities in your web applications. Taking full advantage of TensorFlow.js requires advanced technical skills and knowledge of machine learning fundamentals but this tutorial is intended to be approachable with just the JS covered in this module. 
 
