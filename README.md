@@ -1,10 +1,10 @@
-# Practical 19 (W10 Practical 1): The HTML5 Canvas and Libraries
-You can treat this practical as a choose-your-own-adventure depending on your interests and your goals for assessment 2. Stage 1 focuses on drawing shapes with the HTML5 canvas element. Stage 2 guides you through a basic clone of the classic game, Snake. Stage 3 includes tutorials on some of the libraries that are allowed for assessment 2, including how to create your own webcam video background using Tensorflow.js. Even if you don't plan on using libraries for assessment 2, you are encouraged to come back to these exercises at a later date as libraries are a fundamental part of web development.
+# Week 9 Practical 2: The HTML5 Canvas and Libraries
+Treat this practical as a choose-your-own-adventure depending on your interests and your goals for the assessment. Pick what is most interesting / useful to you rather than trying to do all of it. 
 
 Contents:
-- [Stage 1 - drawing with the canvas](#stage-1)
-- [Stage 2 - Snake clone](#stage-2)
-- [Stage 3 - Library tutorials](#stage-3)
+- [Stage 1 - drawing with the HTML canvas element](#stage-1). 
+- [Stage 2 - Snake clone](#stage-2) using the HTML canvas rather than p5.js, which you did in PDM 1.
+- [Stage 3 - Library tutorials](#stage-3) for a selection of the libraries permitted in the assment. Even if you don't plan on using libraries for the assessment, you are encouraged to come back to these exercises at a later date as libraries are a fundamental part of web development.
 
 ## Stage 1
 These drawing-focused canvas exercises will make you nostalgic for the first few weeks of PDM. They will also help you to get to know the drawing features of the canvas API, beyond what we covered in class.
@@ -99,7 +99,7 @@ When an arrow key is pressed, the event handler should change the direction of t
 When the snake leaves the canvas, it should reappear from the opposite side.
 
 ### 2.3: Add the snake food and make the snake grow
-This is the trickiest part of the game implementation.
+As you may remember from PDM 1, this is the trickiest part of the game implementation.
 
 Write a function that will draw some food at a random location on the canvas. I used an orange circle for food in my implementation so that it is visually distinct from the snake. For best results, the food should appear completely inside a grid cell so that when the snake travels over the food, the snake completely covers it—this looks better and makes collision detection easier.
 
@@ -117,21 +117,21 @@ Some tips for growing the snake and moving it as it gets longer:
 ## Stage 3 
 
 Library tutorials are available for:
-- [How to Use Font Awesome Icons](#how-to-use-font-awesome-icons)
-- [p5js Basics](#p5js-basics)
-- [ThreeJS setup](#threejs-setup)
-- [Create a Webcam Background With TensorFlow](#create-a-webcam-background-with-tensorflow)
+- [How to use Font Awesome icons](#how-to-use-font-awesome-icons)
+- [Creating a p5js sketch from scratch (without the PDM 1 template)](#p5js-basics)
+- [ThreeJS setup and basic usage](#threejs-setup-and-basic-usage)
+- [Create a webcam background With Tensorflow.js](#create-a-webcam-background-with-tensorflow)
 
 You're not expected to do all of them! 
 
 ### How to Use Font Awesome Icons
 Font Awesome provides high quality free icons that can be used in your HTML and styled with CSS (colour, size). They are very useful for menus, action buttons (e.g. edit, delete) and can also be used as basic sprites. Depending on how you install it, using Font Awesome doesn’t require JS.
 
-#### Setup
-The following instructions are an amalgamation of the relevant bits and pieces from [the Font Awesome website](https://fontawesome.com/download). The website provides other options but most of them risk breaking the constraints of assessment 2. 
+#### Setup WITHOUT npm / Vite
+The following instructions are an amalgamation of the relevant bits and pieces from [the Font Awesome website](https://fontawesome.com/download). If you'd like to use npm / Vite instead, follow the instructions on the Font Awesome website.
 
-1.	Create a new basic HTML page and linked CSS and JS files.
-2.	Go to the [Font Awesome download page](https://fontawesome.com/download) and look for the box titled "6.5.2 for the web". Click the "Free for Web" button to download a zip of all the files you’ll need plus a bunch that won’t be needed.
+1.	Create a new basic HTML page with linked CSS file.
+2.	Go to the [Font Awesome download page](https://fontawesome.com/download) and look for the box titled something like "6.x.x for the web". Click the "Free for Web" button to download a zip of all the files you’ll need plus a bunch that won’t be needed.
 3.	Extract the zip. Copy the webfonts and css folders (folders and contents) into the folder with your index.html file. You can move the copied folders into a nested folder if you prefer. Just make sure that webfonts and css folders are in the same folder. 
 4.	Open the css folder and delete everything except all.css as it won’t be needed.
 5.	Link all.css to your HTML page in the same way as your own css file. If you want to customise the icon appearance (colour, size) link all.css before your own stylesheet.
@@ -144,14 +144,14 @@ The following instructions are an amalgamation of the relevant bits and pieces f
 #### Styling a Font Awesome icon
 The classes supplied by Font Awesome are required to display the icon. Icons will usually have two classes. Do not delete or rename either of these classes. Do not attempt to edit all.css either.
 
-To style a Font Awesome icon add your own CSS in your own stylesheet. You can add your own custom classes to a Font Awesome icon by adding the class name to the end of the class list on the `<i>` element. You can also give icons an id and apply style rules to all icons by selecting the `i` tag in your CSS.
+To style a Font Awesome icon add your own CSS in your own stylesheet. You can add your own custom classes to a Font Awesome icon by adding the class name to the end of the class list on the `<i>` element. You can also give icons an id or apply style rules to all icons by selecting the `i` tag in your CSS.
 
 The icon is rendered as a text element, so you can change colour by using the `color` property as you would for text. You can also change the size using the `font-size` property. Other properties you can change include `margin`, `padding`, and `position`.
 
 Icons can be used anywhere you can use a span element: inside paragraphs, headings, links, list items, buttons, and more.
 
 ### p5js Basics
-p5js is the JavaScript version of Processing.
+In PDM1 and 2, we gave you a template to work with. This section will explain how to set up p5.js from scratch.
 
 #### Setup
 1.	Create a new basic HTML page and linked CSS and JS files.
@@ -171,20 +171,14 @@ function draw() {
   background(220);
 }
 ```
-Notice that p5js has `setup()` and `draw()` functions just like Processing. These functions work in exactly the same way. `setup()` is run once when the page loads and should be used to set up the canvas and do any other initialisation that’s needed; `draw()` is called once per frame.
-
-Most built-in functions and system variables are the same as in p5js as they are in Processing but there are a few exceptions. One exception is how the canvas is created. In Processing, you call `size()` and pass it a width and height. In p5js, you call `createCanvas()` instead. It also expects a width and height.
-
-Run index.html using Live Preview if you haven’t done so already. Use Chrome Developer Tools to figure out how p5js draws on the webpage—look for a specific element that’s not in your HTML file but appears in the Inspect pane in Chrome. 
-
-Use your knowledge of Processing to complete each of the steps below. The code is exactly the same in p5js as in Processing unless otherwise noted. Check the sketch output after each bullet point.
+Refresh your memory of p5.js by trying these tasks:
 - The sketch background is greyscale. Make it an RGB colour instead.
 - Draw a circle at 50, 50 and give it a radius of 80 pixels. 
-- Give the circle a different fill colour when the mouse is pressed. In Processing, you could use the `mousePressed` system variable. In p5js, the equivalent variable is called `mouseIsPressed`.
+- Give the circle a different fill colour when the mouse is pressed. 
 - Modify your code so that the circle follows the mouse.
 
 #### Using HTML input controls with your p5js sketch
-Because p5js runs in the browser, you can use standard HTML input elements to add more user control to your sketch.
+You used p5.js's version of input controls (buttons etc.) last year. Because p5js runs in the browser, you can also use standard HTML input elements to add more user control to your sketch.
 
 Start by adding a standard HTML button that will appear above the sketch, rather than inside it. In your HTML file, add an HTML button input and give it an `id` and a value. The button will be used to change the background colour of your sketch. If you check the output, you should see that the button appears above the sketch.
 
@@ -207,13 +201,19 @@ Check that everything works before moving on.
 
 Next, add an event listener to your button that will give your background colour variable a new value when the button is clicked. You can call the p5js `color()` function inside your event handler. You can also use an anonymous function (traditional or arrow) to implement the event handler as you would in vanilla JS.
 
-Hopefully this tutorial will help you get started with p5js. There are lots of things you can do with this library. Here are some suggestions if you would like to go further:
-- Explore the DOM section of the p5js reference. It provides its own syntax for adding input elements and capturing events directly on the canvas.
-- p5js always adds the canvas to the end of the `<body>`, after anything else that’s rendered. Take a look at [this page](https://github.com/processing/p5.js/wiki/Positioning-your-canvas) for guidance on how to position the canvas elsewhere.
-- Try translating some of your Processing work (or lecture / practical sample code) from PDM or CT into p5js. For example, the Pong game from PDM practical 3 would be a good option. Keep in mind that while a lot of the syntax is similar between the two versions there are some differences—keep the p5js reference open as you work.
+p5js always adds the canvas to the end of the `<body>`, after anything else that’s rendered. Take a look at [this page](https://github.com/processing/p5.js/wiki/Positioning-your-canvas) for guidance on how to position the canvas elsewhere.
 
-### ThreeJS setup
-The ThreeJS installation and setup documentation assumes you are using something called NodeJS, which is not permitted for this assessment (because it requires installation which is prone to breaking due to setup difference on different computers). The steps below walk you through setup using a CDN rather than Node.
+Try using CSS to style the canvas in other ways.
+
+### ThreeJS setup and basic usage
+The recommended approach for working with this library is to use Node.js and Vite. 
+
+To install with Node.js and Vite, create a new Vite project as shown last practical. Then,
+1. Open the project in VS Code
+2. Run this terminal command to install ThreeJS: `npm install three`
+3. To check it has installed, open `package.json` and look for "three" in the "dependencies".
+
+If you would like to use it without dealing with Vite, follow the steps below to set it up using a CDN instead.
 1. Create a new basic HTML page and linked CSS and JS files.
 2. In your HTML file, find the `<script>` tag that links your JS file. Add the attribute `type="module"` to the script tag (modules will be explained in week 11). This allows you to use the import syntax as shown in the ThreeJS documentation.
 3. Still in the HTML file, add the following code at the very end of the `<head>` element:
@@ -221,15 +221,15 @@ The ThreeJS installation and setup documentation assumes you are using something
 <script type="importmap">
     {
         "imports": {
-            "three": "https://cdn.jsdelivr.net/npm/three@0.164.1/build/three.module.js",
-            "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.164.1/examples/jsm/"
+            "three": "https://cdn.jsdelivr.net/npm/three@0.174.0/build/three.module.js",
+            "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.174.0/examples/jsm/"
         }
     }
 </script>
 ```
-This `<script>` element contains a JSON object that enables ThreeJS and common "addons" to be imported in your JavaScript file from CDN links. Notice that the values of the two properies that specify URLs contain "@0.164.1". This specifies the version of ThreeJS to import. 0.164.1 is the current version at the time of writing. You should change this value if you would like to use a different version.
+This `<script>` element contains a JSON object that enables ThreeJS and common "addons" to be imported in your JavaScript file from CDN links. Notice that the values of the two properies that specify URLs contain "@0.174.0". This specifies the version of ThreeJS to import. 0.174.0 is the current version at the time of writing. You should change this value if you would like to use a different version.
 
-4. ThreeJS is now ready for use. Try following the [Create a Scene](https://threejs.org/docs/index.html#manual/en/introduction/Creating-a-scene) tutorial in the ThreeJS docs to learn the basic concepts. The completed code is available in the sample solution for this practical, which is already available in the Lecture-Examples repo. Look for the threejsBasicSetup folder.
+No matter which installation approach you took, ThreeJS is now ready for use. Try following the [Create a Scene](https://threejs.org/docs/index.html#manual/en/introduction/Creating-a-scene) tutorial in the ThreeJS docs to learn the basic concepts. The completed code is available in the sample solution for this practical, which is already available in the Lecture-Examples repo. Look for the threejsBasicSetup folder.
 
 
 #### Using 3D models created elsewhere
