@@ -1,4 +1,4 @@
-# Week 9 Practical 1: Vite Tutorial
+# Week 9 Practical 2: Vite Tutorial
 This practical will walk you through the steps of creating, editing, building, and publishing a Vite-built website on GitHub pages.
 
 NOTE: You are not required to use this approach in your assessment but you may need to if you want to use libraries. If you are confident you don't need to use this approach and it feels like too much to tackle right now, you can choose to spend this time working on your assessment or your portfolio instead.
